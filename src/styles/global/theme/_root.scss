@@ -1,0 +1,51 @@
+:root {
+  --background-color: #{grey(8)};
+  --text-color: #{grey(86)};
+  --text-color-em: #{grey(99)};
+  --text-color-muted: #{grey(46)};
+
+  --link-color: #{link(70)};
+  --link-visited-color: #{pink(70)};
+
+  --input-border-color: #{grey(38)};
+  --input-border-hover-color: #{grey(58)};
+  --input-border-disabled-color: #{grey(78)};
+  --input-background-color: #{grey(12)};
+  --input-background-focus-color: #{grey(2)};
+  --input-background-disabled-color: #{grey(8)};
+
+  --elevated-background-color: #{grey(18)};
+  --elevated-border-color: #{grey(32)};
+
+  --primary-color: #{primary(67)};
+  --secondary-color: #{secondary(67)};
+  --tertiary-color: #{tertiary(67)};
+  --success-color: #{success(67)};
+  --warning-color: #{warning(67)};
+  --danger-color: #{danger(67)};
+
+  --primary-color-shade: #{primary(47)};
+  --secondary-color-shade: #{secondary(47)};
+  --tertiary-color-shade: #{tertiary(47)};
+  --success-color-shade: #{success(47)};
+  --warning-color-shade: #{warning(47)};
+  --danger-color-shade: #{danger(47)};
+
+  --primary-color-tint: #{primary(87)};
+  --secondary-color-tint: #{secondary(87)};
+  --tertiary-color-tint: #{tertiary(87)};
+  --success-color-tint: #{success(87)};
+  --warning-color-tint: #{warning(87)};
+  --danger-color-tint: #{danger(87)};
+}
+
+.layout {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.elevated {
+  border-color: var(--elevated-border-color);
+  background: var(--elevated-background-color);
+}
+

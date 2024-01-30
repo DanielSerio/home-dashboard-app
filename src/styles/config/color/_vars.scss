@@ -1,0 +1,56 @@
+$red-hue: 357;
+$orange-hue: 28;
+$yellow-hue: 40;
+$green-hue: 120;
+$cyan-hue: 185;
+$blue-hue: 239;
+$purple-hue: 275;
+$pink-hue: 311;
+
+$hue-map: (
+  primary: $purple-hue,
+  purple: $purple-hue,
+  secondary: $blue-hue,
+  link: $blue-hue,
+  blue: $blue-hue,
+  tertiary: $green-hue,
+  success: $green-hue,
+  green: $green-hue,
+  warning: $yellow-hue,
+  yellow: $yellow-hue,
+  orange: $orange-hue,
+  danger: $red-hue,
+  red: $red-hue,
+  cyan: $cyan-hue,
+  pink: $pink-hue,
+  grey: $green-hue,
+);
+
+$red-sat: 95;
+$orange-sat: 80;
+$yellow-sat: 100;
+$green-sat: 70;
+$cyan-sat: 100;
+$blue-sat: 90;
+$purple-sat: 95;
+$pink-sat: 100;
+
+$saturation-map: (
+  primary: $purple-sat,
+  purple: $purple-sat,
+  secondary: $blue-sat,
+  link: $blue-sat,
+  blue: $blue-sat,
+  tertiary: $green-sat,
+  success: $green-sat,
+  green: $green-sat,
+  warning: $yellow-sat,
+  yellow: $yellow-sat,
+  orange: $orange-sat,
+  danger: $red-sat,
+  red: $red-sat,
+  cyan: $cyan-sat,
+  pink: $pink-sat,
+  grey: 3,
+);
+

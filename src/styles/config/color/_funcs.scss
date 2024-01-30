@@ -1,0 +1,153 @@
+@function grey(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: grey)
+) {
+  @return hsla(map-get($hue-map, grey), $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function primary(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: primary)
+) {
+  @return hsla(
+    map-get($hue-map, primary),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function secondary(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: secondary)
+) {
+  @return hsla(
+    map-get($hue-map, secondary),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function tertiary(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: tertiary)
+) {
+  @return hsla(
+    map-get($hue-map, tertiary),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+
+@function success(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: success)
+) {
+  @return hsla(
+    map-get($hue-map, success),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function warning(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: warning)
+) {
+  @return hsla(
+    map-get($hue-map, warning),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function danger(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: danger)
+) {
+  @return hsla(
+    map-get($hue-map, danger),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+
+@function red(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: red)
+) {
+  @return hsla(map-get($hue-map, red), $saturation * 1%, $light * 1%, $alpha);
+}
+@function orange(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: orange)
+) {
+  @return hsla(
+    map-get($hue-map, orange),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function yellow(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: yellow)
+) {
+  @return hsla(
+    map-get($hue-map, yellow),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function green(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: green)
+) {
+  @return hsla(map-get($hue-map, green), $saturation * 1%, $light * 1%, $alpha);
+}
+@function cyan(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: cyan)
+) {
+  @return hsla(map-get($hue-map, cyan), $saturation * 1%, $light * 1%, $alpha);
+}
+@function blue(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: blue)
+) {
+  @return hsla(map-get($hue-map, blue), $saturation * 1%, $light * 1%, $alpha);
+}
+@function purple(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: purple)
+) {
+  @return hsla(
+    map-get($hue-map, purple),
+    $saturation * 1%,
+    $light * 1%,
+    $alpha
+  );
+}
+@function pink(
+  $light,
+  $alpha: 1,
+  $saturation: map-get($map: $saturation-map, $key: pink)
+) {
+  @return hsla(map-get($hue-map, pink), $saturation * 1%, $light * 1%, $alpha);
+}
