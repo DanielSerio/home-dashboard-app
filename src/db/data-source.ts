@@ -1,5 +1,8 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { User } from "./entities/user.entity";
+import { GoalCategory } from "./entities/goal-category.entity";
+import { Goal } from "./entities/goal.entity";
 
 export interface DataSourceConfig {
   database: string;
@@ -11,7 +14,7 @@ export async function getDataSource(config: DataSourceConfig) {
   try {
     const AppDataSource = new DataSource({
       type: "mariadb",
-      entities: [],
+      entities: [User, GoalCategory, Goal],
       migrations: [],
       synchronize: false,
       host: "localhost",
