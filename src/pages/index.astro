@@ -2,6 +2,7 @@
 import MainLayout from "../layout/MainLayout.astro";
 import { getEnv } from "../env/get-env";
 import { getDataSource } from "../db/data-source";
+import "../styles/page/landing.scss";
 
 const env = getEnv();
 const AppDataSource = await getDataSource({

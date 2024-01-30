@@ -1,0 +1,26 @@
+@import "../../config/config.scss";
+
+html {
+  @extend .poppins-light;
+  font-size: calc($font-xs / 16) * 100%;
+}
+
+body {
+  font-size: to-rem($font-md);
+  line-height: to-rem($font-lg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend .trirong-bold;
+}
+
+em {
+  font-style: normal;
+  font-size: to-rem($font-lg);
+}
+
