@@ -1,11 +1,7 @@
 import type { APIRoute } from "astro";
-import {
-  User,
-  type UserCreate,
-  type UserCred,
-} from "../../../db/entities/user.entity";
+import { User, type UserCred } from "../../../db/entities/user.entity";
 import { createErrorResponse } from "../../../utility/error/create-error-response";
-import bcrypt, { compareSync } from "bcryptjs";
+import bcrypt from "bcryptjs";
 import { getEnv } from "../../../env/get-env";
 import { getDataSource } from "../../../db/data-source";
 import {
@@ -13,7 +9,7 @@ import {
   getPayloadTransform,
 } from "../../../utility/jwt/get-jwt-utility";
 
-const { hashSync } = bcrypt;
+const { compareSync } = bcrypt;
 
 const env = getEnv();
 const AppDataSource = await getDataSource({
