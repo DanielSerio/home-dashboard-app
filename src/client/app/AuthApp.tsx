@@ -1,5 +1,6 @@
-import { createSignal, type Component, createMemo } from "solid-js";
+import { createSignal, type Component, createMemo, Show } from "solid-js";
 import { AppShell } from "../components/AppShell";
+import { FormControl } from "../components/forms/FormControl";
 
 export interface AuthAppProps {
   mode: string | "login" | "register";
@@ -43,8 +44,40 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
     <AppShell route="auth">
       <h1>SerioHome</h1>
       <form onSubmit={handleSubmit}>
-        <div class="body"></div>
+        <div class="body">
+          <FormControl>
+            <input type="email" name="email" id="email" value={emailValue()} />
+            <label for="email">Email</label>
+          </FormControl>
+          <FormControl>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={passwordValue()}
+            />
+            <label for="password">Password</label>
+          </FormControl>
+          <Show when={trueMode() === "register"}>
+            <FormControl>
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                value={passwordValue()}
+              />
+              <label for="confirmPassword">Confirm Password</label>
+            </FormControl>
+          </Show>
+        </div>
         <footer>
+          <div class="links">
+            <a
+              href={`?mode=${trueMode() === "register" ? "login" : "register"}`}
+            >
+              {trueMode() === "register" ? "Already" : "Don't"} have an account?
+            </a>
+          </div>
           <button type="submit">{trueMode()}</button>
         </footer>
       </form>
