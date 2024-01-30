@@ -3,7 +3,7 @@ import MainLayout from "../../layout/MainLayout.astro";
 import { getEnv } from "../../env/get-env";
 import { getDataSource } from "../../db/data-source";
 import "../../styles/page/goals-dashboard.scss";
-import { GoalsApp } from "../../client/app/GoalsApp";
+import { AuthApp } from "../../client/app/AuthApp";
 
 const env = getEnv();
 const AppDataSource = await getDataSource({
@@ -13,6 +13,6 @@ const AppDataSource = await getDataSource({
 });
 ---
 
-<MainLayout title="SerioHome | Goals">
-  <GoalsApp client:load />
+<MainLayout title="SerioHome | Auth">
+  <AuthApp client:load />
 </MainLayout>
