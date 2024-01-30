@@ -4,6 +4,7 @@ import { getEnv } from "../../env/get-env";
 import { getDataSource } from "../../db/data-source";
 import "../../styles/page/goals-dashboard.scss";
 import { AuthApp } from "../../client/app/AuthApp";
+import { getQuery } from "../../utility/url/get-query";
 
 const env = getEnv();
 const AppDataSource = await getDataSource({
@@ -11,8 +12,12 @@ const AppDataSource = await getDataSource({
   user: env.DB_USER,
   password: env.DB_PASS,
 });
+
+const req = Astro.request;
+
+const query = getQuery<{ mode?: string }>(req.url);
 ---
 
 <MainLayout title="SerioHome | Auth">
-  <AuthApp client:load />
+  <AuthApp client:load mode={query?.mode ?? "login"} />
 </MainLayout>
