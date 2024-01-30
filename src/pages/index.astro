@@ -1,16 +1,16 @@
 ---
+import MainLayout from "../layout/MainLayout.astro";
+import { getEnv } from "../env/get-env";
+import { getDataSource } from "../db/data-source";
 
+const env = getEnv();
+const AppDataSource = await getDataSource({
+  database: env.DB_NAME,
+  user: env.DB_USER,
+  password: env.DB_PASS,
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="SerioHome">
+  <h1>SerioHome</h1>
+</MainLayout>
