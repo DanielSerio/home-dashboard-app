@@ -1,6 +1,7 @@
 import { createSignal, type Component, createMemo, Show } from "solid-js";
 import { AppShell } from "../components/AppShell";
 import { FormControl } from "../components/forms/FormControl";
+import { PasswordInput } from "../components/controls/PasswordInput";
 
 export interface AuthAppProps {
   mode: string | "login" | "register";
@@ -50,21 +51,19 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
             <label for="email">Email</label>
           </FormControl>
           <FormControl>
-            <input
-              type="password"
-              name="password"
+            <PasswordInput
               id="password"
-              value={passwordValue()}
+              value={passwordValue}
+              setValue={setPasswordValue}
             />
             <label for="password">Password</label>
           </FormControl>
           <Show when={trueMode() === "register"}>
             <FormControl>
-              <input
-                type="password"
-                name="confirmPassword"
+              <PasswordInput
                 id="confirmPassword"
-                value={passwordValue()}
+                value={confirmPasswordValue}
+                setValue={setConfirmPasswordValue}
               />
               <label for="confirmPassword">Confirm Password</label>
             </FormControl>
