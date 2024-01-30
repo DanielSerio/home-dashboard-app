@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.4.1",
     "@astrojs/node": "^8.1.0",
     "@astrojs/solid-js": "^4.0.1",
+    "@tanstack/solid-query": "^5.17.19",
     "astro": "^4.2.6",
     "solid-js": "^1.8.12",
     "typescript": "^5.3.3"
