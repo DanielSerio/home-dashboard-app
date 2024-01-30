@@ -13,6 +13,7 @@ export const PasswordInput: Component<BaseInputProps> = (props) => {
         disabled={props.disabled}
       />
       <button
+        type="button"
         class="control-button"
         onClick={() => setTextIsVisible((v) => !v)}
       >
