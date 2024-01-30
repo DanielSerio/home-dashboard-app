@@ -1,0 +1,18 @@
+---
+import MainLayout from "../../layout/MainLayout.astro";
+import { getEnv } from "../../env/get-env";
+import { getDataSource } from "../../db/data-source";
+import "../../styles/page/goals-dashboard.scss";
+
+const env = getEnv();
+const AppDataSource = await getDataSource({
+  database: env.DB_NAME,
+  user: env.DB_USER,
+  password: env.DB_PASS,
+});
+---
+
+<MainLayout title="SerioHome | Goals">
+  <h1>SerioHome | Goals</h1>
+  <a href="/">Back to home</a>
+</MainLayout>
