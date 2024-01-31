@@ -1,5 +1,6 @@
 import { createSignal, type Component } from "solid-js";
 import type { BaseInputProps } from "./Props";
+import Icon from "../icons/Icon";
 
 export const PasswordInput: Component<BaseInputProps> = (props) => {
   const [textIsVisible, setTextIsVisible] = createSignal(false);
@@ -17,7 +18,7 @@ export const PasswordInput: Component<BaseInputProps> = (props) => {
         class="control-button"
         onClick={() => setTextIsVisible((v) => !v)}
       >
-        *
+        <Icon name={`eye${textIsVisible() ? "-off" : ""}-outline`} />
       </button>
     </div>
   );

@@ -1,0 +1,25 @@
+form {
+  .body,
+  footer,
+  .links {
+    position: relative;
+    width: calc(100svw - 72px);
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .body {
+    flex-direction: column;
+  }
+
+  .links,
+  footer {
+    align-items: center;
+    margin-top: to-rem($base * 2);
+  }
+
+  footer {
+    justify-content: flex-end;
+  }
+}
+

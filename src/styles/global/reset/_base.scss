@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+input,
+select,
+textarea {
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 300;
+  padding: 0 1.25ch;
+  border-radius: to-rem(3);
+}
+

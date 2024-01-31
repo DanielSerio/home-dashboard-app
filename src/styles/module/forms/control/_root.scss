@@ -1,0 +1,52 @@
+.form-control {
+  margin-bottom: to-rem($base * 2);
+
+  &:not(.inline) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  input,
+  select {
+    min-height: to-rem($base * 7);
+    width: calc(100% - 2px);
+    margin: 1px;
+  }
+
+  .control-wrap {
+    position: relative;
+    width: 100%;
+
+    input,
+    select {
+      padding-right: to-rem($base * 8);
+      padding: 0 1.25ch;
+    }
+
+    button {
+      position: absolute;
+      top: 1px;
+      right: 0;
+      z-index: 10;
+      height: to-rem($base * 7);
+      width: to-rem($base * 7);
+      line-height: 0;
+      display: grid;
+      place-content: center;
+      outline: none;
+      background: transparent;
+      border: none;
+      opacity: 0.4;
+    }
+
+    &:hover > button {
+      opacity: 1;
+    }
+  }
+
+  label {
+    font-size: to-rem($font-sm);
+    margin-bottom: to-rem($base);
+  }
+}
+

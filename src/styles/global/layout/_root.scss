@@ -23,3 +23,12 @@ body {
   }
 }
 
+.app-shell {
+  flex: 1;
+
+  &.auth {
+    display: grid;
+    place-content: center;
+  }
+}
+

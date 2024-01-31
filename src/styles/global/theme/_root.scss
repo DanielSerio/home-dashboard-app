@@ -4,7 +4,7 @@
   --text-color-em: #{grey(99)};
   --text-color-muted: #{grey(46)};
 
-  --link-color: #{link(70)};
+  --link-color: #{secondary(73)};
   --link-visited-color: #{pink(70)};
 
   --input-border-color: #{grey(38)};
@@ -47,5 +47,42 @@
 .elevated {
   border-color: var(--elevated-border-color);
   background: var(--elevated-background-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:visited {
+  color: var(--link-visited-color);
+}
+
+input,
+select,
+textarea {
+  background: var(--input-background-color);
+  border: 1px solid var(--input-border-color);
+
+  &:not(:disabled) {
+    &:hover {
+      border-color: var(--input-border-hover-color);
+    }
+
+    &:focus {
+      background: var(--input-background-focus-color);
+      box-shadow: 0 0 0 1px var(--primary-color);
+    }
+  }
+}
+
+.control-wrap button {
+  color: inherit;
+}
+
+input:focus + label,
+select:focus + label,
+textarea:focus + label,
+.control-wrap:focus-within + label {
+  color: white;
 }
 

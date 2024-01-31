@@ -43,7 +43,6 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
 
   return (
     <AppShell route="auth">
-      <h1>SerioHome</h1>
       <form onSubmit={handleSubmit}>
         <div class="body">
           <FormControl>
@@ -69,14 +68,12 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
             </FormControl>
           </Show>
         </div>
+        <div class="links">
+          <a href={`?mode=${trueMode() === "register" ? "login" : "register"}`}>
+            {trueMode() === "register" ? "Already" : "Don't"} have an account?
+          </a>
+        </div>
         <footer>
-          <div class="links">
-            <a
-              href={`?mode=${trueMode() === "register" ? "login" : "register"}`}
-            >
-              {trueMode() === "register" ? "Already" : "Don't"} have an account?
-            </a>
-          </div>
           <button type="submit">{trueMode()}</button>
         </footer>
       </form>
