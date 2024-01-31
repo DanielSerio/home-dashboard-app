@@ -14,6 +14,7 @@ export const PasswordInput: Component<PasswordInputProps> = (props) => {
         disabled={props.disabled}
         value={props.value()}
         onChange={props.onChange}
+        onFocus={props.onTouched}
       />
       <button
         type="button"

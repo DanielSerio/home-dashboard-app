@@ -40,6 +40,17 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
     },
   } as ValidateLoginConfig | ValidateRegisterConfig);
 
+  const submitIsDisabled = createMemo(() => {
+    if (!touched.email || !touched.password) return true;
+    if (!valid.email || !valid.password) return true;
+    if (props.mode === "register") {
+      if (!touched.confirmPassword) return true;
+      if (!valid.confirmPassword) return true;
+    }
+    if (formIsSubmitting()) return true;
+    return false;
+  });
+
   const getChangeListener = (name: string) => {
     return (event: Event) => {
       const target = event.target as HTMLInputElement;
@@ -82,28 +93,55 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
     <AppShell route="auth">
       <form onSubmit={handleSubmit}>
         <div class="body">
-          <FormControl>
+          <FormControl
+            error={
+              touched.email
+                ? !valid.email
+                  ? "Invalid Email Address"
+                  : null
+                : null
+            }
+          >
             <input
               type="email"
               name="email"
               id="email"
               value={emailValue()}
+              onFocus={() => setTouched("email", true)}
               onChange={getChangeListener("email")}
             />
             <label for="email">Email</label>
           </FormControl>
-          <FormControl>
+          <FormControl
+            error={
+              touched.password
+                ? !valid.password
+                  ? "Password must be at least 6 characters"
+                  : null
+                : null
+            }
+          >
             <PasswordInput
               id="password"
+              onTouched={() => setTouched("password", true)}
               value={passwordValue}
               onChange={getChangeListener("password")}
             />
             <label for="password">Password</label>
           </FormControl>
           <Show when={trueMode() === "register"}>
-            <FormControl>
+            <FormControl
+              error={
+                touched.confirmPassword
+                  ? !valid.confirmPassword
+                    ? "Passwords do not match"
+                    : null
+                  : null
+              }
+            >
               <PasswordInput
                 id="confirmPassword"
+                onTouched={() => setTouched("confirmPassword", true)}
                 value={confirmPasswordValue}
                 onChange={getChangeListener("confirmPassword")}
               />
@@ -117,7 +155,9 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
           </a>
         </div>
         <footer>
-          <button type="submit">{trueMode()}</button>
+          <button type="submit" disabled={submitIsDisabled()}>
+            {trueMode()}
+          </button>
         </footer>
       </form>
     </AppShell>

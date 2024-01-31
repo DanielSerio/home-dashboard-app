@@ -50,3 +50,17 @@
   }
 }
 
+.form-control .control-error {
+  font-size: to-rem($font-xs);
+  color: var(--danger-color);
+}
+
+.form-control.error {
+  input,
+  select,
+  textarea {
+    &:focus {
+      box-shadow: 0 0 0 1px var(--danger-color);
+    }
+  }
+}

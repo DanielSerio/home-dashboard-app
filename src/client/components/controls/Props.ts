@@ -16,5 +16,6 @@ export interface PasswordInputProps {
   id: string;
   value: Accessor<string>;
   onChange: (e: Event) => void;
+  onTouched?: () => void;
 }
 
