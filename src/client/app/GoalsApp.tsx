@@ -1,32 +1,44 @@
-import { type Component } from "solid-js";
+import { createSignal, type Component } from "solid-js";
 import { AppShell } from "../components/AppShell";
 import AppNavigation, {
   type AppNavigationTabProps,
 } from "../components/navigation/AppNavigation";
-
-const NAV_TABS: AppNavigationTabProps[] = [
-  {
-    icon: "dashboard",
-    text: "Dashboard",
-    id: "dash",
-    component: () => {
-      return <div>Dashboard</div>;
-    },
-  },
-  {
-    icon: "tag",
-    text: "Goals",
-    id: "goals",
-    component: () => {
-      return <div>Goals</div>;
-    },
-  },
-];
+import { DashboardPage } from "./goals/DashboardPage";
+import { GoalsPage } from "./goals/GoalsPage";
+import { CategoriesPage } from "./goals/CategoriesPage";
+import { createStore } from "solid-js/store";
 
 export const GoalsApp: Component<{}> = (props) => {
+  const [count, setCount] = createStore({ value: 0 });
+  const NAV_TABS: AppNavigationTabProps[] = [
+    {
+      icon: "dashboard",
+      text: "Dashboard",
+      id: "dash",
+      component: DashboardPage,
+    },
+    {
+      icon: "tag",
+      text: "Goals",
+      id: "goals",
+      component: GoalsPage,
+      componentProps: {
+        count,
+      },
+    },
+    {
+      icon: "tag",
+      text: "Categories",
+      id: "categories",
+      component: CategoriesPage,
+      componentProps: {
+        count,
+        setCount,
+      },
+    },
+  ];
   return (
     <AppShell route="goals">
-      <h1>Goals</h1>
       <AppNavigation tabs={NAV_TABS} />
     </AppShell>
   );

@@ -7,22 +7,28 @@ import {
   createMemo,
 } from "solid-js";
 import Icon from "../icons/Icon";
+import { Dynamic } from "solid-js/web";
 
 export interface AppNavigationTabProps {
   id: string;
   icon: string;
   text: string;
   component: Component<any>;
+  componentProps?: object;
 }
 
 const AppNavigationTab: Component<{
   tab: AppNavigationTabProps;
   setActiveTab: Setter<string>;
+  isActive: boolean;
 }> = (props) => {
   return (
     <button
       type="button"
-      class="tab"
+      classList={{
+        tab: true,
+        active: props.isActive,
+      }}
       onClick={() => props.setActiveTab(props.tab.id)}
     >
       <span class="icon">
@@ -39,7 +45,12 @@ const AppNavigation: ParentComponent<{ tabs: AppNavigationTabProps[] }> = (
   const [activeTabID, setActiveTabID] = createSignal(props.tabs[0].id);
   const activeComponent = createMemo(() => {
     const index = props.tabs.findIndex((t) => t.id === activeTabID());
-    return props.tabs[index].component({});
+    return (
+      <Dynamic
+        component={props.tabs[index].component}
+        {...props.tabs[index].componentProps}
+      />
+    );
   });
   return (
     <div class="app-navigation">
@@ -47,7 +58,11 @@ const AppNavigation: ParentComponent<{ tabs: AppNavigationTabProps[] }> = (
       <footer>
         <For each={props.tabs}>
           {(tab) => (
-            <AppNavigationTab tab={tab} setActiveTab={setActiveTabID} />
+            <AppNavigationTab
+              isActive={activeTabID() === tab.id}
+              tab={tab}
+              setActiveTab={setActiveTabID}
+            />
           )}
         </For>
       </footer>
