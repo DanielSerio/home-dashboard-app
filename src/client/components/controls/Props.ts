@@ -9,3 +9,12 @@ export interface BaseInputProps {
   setValue: Setter<string>;
 }
 
+export interface PasswordInputProps {
+  placeholder?: string;
+  disabled?: boolean;
+  name?: string;
+  id: string;
+  value: Accessor<string>;
+  onChange: (e: Event) => void;
+}
+

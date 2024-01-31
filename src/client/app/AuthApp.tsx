@@ -2,6 +2,11 @@ import { createSignal, type Component, createMemo, Show } from "solid-js";
 import { AppShell } from "../components/AppShell";
 import { FormControl } from "../components/forms/FormControl";
 import { PasswordInput } from "../components/controls/PasswordInput";
+import {
+  validateAuth,
+  type ValidateLoginConfig,
+  type ValidateRegisterConfig,
+} from "../hooks/validate-auth";
 
 export interface AuthAppProps {
   mode: string | "login" | "register";
@@ -19,6 +24,38 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
       ? "login"
       : (props.mode as "login" | "register")
   );
+  const { setTouched, touched, valid, validate } = validateAuth({
+    mode: trueMode(),
+    email: {
+      validators: [(v: string) => v.length > 0],
+      value: emailValue,
+    },
+    password: {
+      validators: [(v: string) => v.length > 0],
+      value: passwordValue,
+    },
+    confirmPassword: {
+      validators: [(v: string) => v === passwordValue()],
+      value: confirmPasswordValue,
+    },
+  } as ValidateLoginConfig | ValidateRegisterConfig);
+
+  const getChangeListener = (name: string) => {
+    return (event: Event) => {
+      const target = event.target as HTMLInputElement;
+
+      if (name === "confirmPassword") {
+        setConfirmPasswordValue(target.value);
+        validate();
+      } else if (name === "password") {
+        setPasswordValue(target.value);
+        validate();
+      } else if (name === "email") {
+        setEmailValue(target.value);
+        validate();
+      }
+    };
+  };
 
   async function login() {}
 
@@ -46,14 +83,20 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
       <form onSubmit={handleSubmit}>
         <div class="body">
           <FormControl>
-            <input type="email" name="email" id="email" value={emailValue()} />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={emailValue()}
+              onChange={getChangeListener("email")}
+            />
             <label for="email">Email</label>
           </FormControl>
           <FormControl>
             <PasswordInput
               id="password"
               value={passwordValue}
-              setValue={setPasswordValue}
+              onChange={getChangeListener("password")}
             />
             <label for="password">Password</label>
           </FormControl>
@@ -62,7 +105,7 @@ export const AuthApp: Component<AuthAppProps> = (props) => {
               <PasswordInput
                 id="confirmPassword"
                 value={confirmPasswordValue}
-                setValue={setConfirmPasswordValue}
+                onChange={getChangeListener("confirmPassword")}
               />
               <label for="confirmPassword">Confirm Password</label>
             </FormControl>

@@ -1,8 +1,8 @@
 import { createSignal, type Component } from "solid-js";
-import type { BaseInputProps } from "./Props";
+import type { BaseInputProps, PasswordInputProps } from "./Props";
 import Icon from "../icons/Icon";
 
-export const PasswordInput: Component<BaseInputProps> = (props) => {
+export const PasswordInput: Component<PasswordInputProps> = (props) => {
   const [textIsVisible, setTextIsVisible] = createSignal(false);
   return (
     <div class="control-wrap">
@@ -12,6 +12,8 @@ export const PasswordInput: Component<BaseInputProps> = (props) => {
         name={props.name}
         placeholder={props.placeholder}
         disabled={props.disabled}
+        value={props.value()}
+        onChange={props.onChange}
       />
       <button
         type="button"
